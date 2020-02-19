@@ -1,0 +1,136 @@
+<div class="container py-1">
+
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h5 class="card-title">Random Password Generator <i class="fas fa-key"></i></h5>
+          <hr>
+          <form method="POST" action="/">
+            <div class="form-group form-row">
+              <label for="length" class="col-md-4 col-form-label">
+                Password Length
+              </label>
+              <div class="col-md-8">
+                <input type="number" name="length" class="form-control" id="length" min="8" max="16"
+                  value="{{options.length}}">
+                <small class="text-muted form-text">Length is available between 8 ~ 16</small>
+              </div>
+            </div>
+
+            <div class="form-group form-row">
+              <label for="amount" class=" col-md-4 col-form-label">
+                Password Amount
+              </label>
+              <div class="col-md-8">
+                <input type="number" name="amount" class="form-control" id="amount" min="1" max="100"
+                  value="{{options.amount}}">
+                <small class="text-muted form-text">Amount is available between 1 ~ 100</small>
+              </div>
+            </div>
+
+            <div class="form-group form-row mb-2 align-items-center">
+              <label for="lowercase" class="col-md-4 col-form-label">Include Lowercase Characters</label>
+              <div class="col-md-8">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="lowercase" name="lowercase"
+                    {{#if options.lowercase}}checked{{/if}}>
+                  <label class="custom-control-label" for="lowercase">(e.g. abcdefg)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form-row mb-2 align-items-center">
+              <label for="uppercase" class="col-md-4 col-form-label">Include Uppercase Characters</label>
+              <div class="col-md-8">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="uppercase" name="uppercase"
+                    {{#if options.uppercase}}checked{{/if}}>
+                  <label class="custom-control-label" for="uppercase">(e.g. ABCDEFG)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form-row mb-2 align-items-center">
+              <label for="numbers" class="col-md-4 col-form-label">Include Numbers</label>
+              <div class="col-md-8">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="numbers" name="numbers"
+                    {{#if options.numbers}}checked{{/if}}>
+                  <label class="custom-control-label" for="numbers">(e.g. 123456)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form-row mb-2 align-items-center">
+              <label for="symbols" class="col-md-4 col-form-label">Include Symbols</label>
+              <div class="col-md-8">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="symbols" name="symbols"
+                    {{#if options.symbols}}checked{{/if}}>
+                  <label class="custom-control-label" for="symbols">(e.g. @#$%)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form-row mb-2 align-items-center">
+              <label for="excludeSimilarCharacters" class="col-md-4 col-form-label">Exclude Similar Characters</label>
+              <div class="col-md-8">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="excludeSimilarCharacters"
+                    name="excludeSimilarCharacters" {{#if options.excludeSimilarCharacters}}checked{{/if}}>
+                  <label class="custom-control-label" for="excludeSimilarCharacters">(e.g. 1iIl0oO)</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group form-row">
+              <label for="exclude-characters" class="col-md-4 col-form-label">
+                Exclude Characters
+              </label>
+              <div class="col-md-8">
+                <input type="text" name="excludeCharacters" class="form-control" id="exclude-characters"
+                  value="{{options.excludeCharacters}}">
+                <small class="text-muted form-text">These characters will not appear in the passwrod</small>
+              </div>
+            </div>
+
+            <button class="btn btn-success mb-2" type="submit">Generate Password</button>
+
+            {{#if error}}
+            <div class="alert alert-danger" role="alert">
+              <code>There are no valid characters in your selection.</code>
+            </div>
+            {{/if}}
+
+            {{#if password}}
+            <div class="alert alert-secondary my-0" role="alert">
+              <div class=""><big>Password</big></div>
+            </div>
+
+            {{#each password}}
+
+            {{#ifOdd @index}}
+            <div class="alert alert-secondary my-0" role="alert">
+              <div><big><code>{{this}}</code></big></div>
+            </div>
+            {{else}}
+            <div class="alert alert-info my-0" role="alert">
+              <div><big><code>{{this}}</code></big></div>
+            </div>
+            {{/ifOdd}}
+
+            {{/each}}
+
+            {{/if}}
+
+          </form>
+        </div>
+
+        <small class="card-footer text-muted text-right">
+          Idea is inspired by <a href="https://passwordsgenerator.net/" target="_blank">Strong Random Password</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
