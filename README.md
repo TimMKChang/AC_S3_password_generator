@@ -14,7 +14,7 @@ Generate Password
 
 ## Installing
 1. clone the project
->git clone https://github.com/TimMKChang/restaurant-list.git
+>git clone https://github.com/TimMKChang/AC_S3_password_generator.git
 2. install packages
 >npm install
 3. run the server
